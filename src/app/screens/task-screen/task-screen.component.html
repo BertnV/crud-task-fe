@@ -1,0 +1,53 @@
+<!--This container is to hold all the items inside-->
+<div class="container mt-4">
+    <!--Header for the name of the app code-->
+<h2 class="bg-info p-2 fw-bold text-center" >Task Manager App</h2>
+<div class="row"> <!-- this row holds the h3 and the button-->
+    <div class="col-4"> <!--This column holds the 4 columns -->
+    <div class="row"> <!--this row holds the holds the h3 and button for the col-4 only -->
+        <div class="col-6"><!--This column is for task list name -->
+            <h3 class="fw-bold float-start">Task List</h3> <!--The float-start puts the text in the start-->
+        </div>
+        <!--This is where the button code starts-->
+        <div class="col-6 "><!--this column is for the button -->
+            <button type="button" class="btn btn-secondary float-end">New Task List</button>
+        </div><!--The float end puts the button in the end -->
+    </div>
+    <!--This is where the list code starts-->
+    <div class="row"><!--This row is for the first line of the list -->
+        <div class="col-12"><!--This column is the length space of the holders of the group-->
+                    <div class="list-group">
+                    <a [routerLink] = "['/task-list', item._id]" routerLinkActive = "active"
+                    *ngFor="let item of tasksLists"
+                    class="list-group-item list-group-item-action " aria-current="true">
+                    {{item.title}}
+                      <span class="badge bg-danger rounded-pill">X</span>
+                    </a>
+                    </div>
+                </div>
+             </div>
+        </div>
+<div class="col-8"> <!--this is where the 8 column item starts  -->
+    <div class="row"><!--this row holds the h3 and the button -->
+        <div class="col-6"> <!--put border to help us put the button into a holder so we can align than erase --> 
+            <h3 class="fw-bold">Linked Tasks</h3>
+        </div>
+        <div class="col-6">
+            <button type="button" class="btn btn-secondary float-end">New Task</button> 
+        </div> <!--float-end in the button helps the button go to the end of the border-->
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <ul class="list-group">
+                <li [class.mark-completed] = "task.completed==true"
+                 style="cursor: pointer;" *ngFor="let task of tasks" (click)="taskClicked(task)"
+                class=" mark-completed list-group-item d-flex justify-content-between align-items-center">
+                  {{task.title}}
+                  <span class="badge bg-danger rounded-pill">X</span>
+                </li>
+              </ul>   
+        </div>
+    </div>
+</div>
+</div>
+</div>
